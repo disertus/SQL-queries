@@ -1,3 +1,6 @@
+-- This query calculates the median of the titles lengths for each location
+-- Note: MySQL 
+
 SET @row_number := 0;
 SET @median_group :='';
 
