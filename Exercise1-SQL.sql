@@ -1,1 +1,0 @@
- -- Walkthrough the basic comcepts of SQL with commented explanations for myself
