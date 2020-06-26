@@ -1,5 +1,4 @@
-# SQL-queries
-Assignment queries written using MySQL (5.1) dialect
+Repo containing assignment queries.
 
 ### SQL dialect:
 Since I’ve worked with Google MySQL (5.1) DB for quite some time, I decided to choose this dialect due to its familiarity.
