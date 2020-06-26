@@ -1,5 +1,7 @@
 -- This query calculates the median of the titles lengths for each location
--- Note: MySQL 
+
+-- Note: Due to the lack of a straightforward way to calculate the group median in MySQL 5.1 dialect, 
+-- the code turned out to be a bit lengthy and not very readable (there are better ways to do it in Postgre)
 
 SET @row_number := 0;
 SET @median_group :='';
