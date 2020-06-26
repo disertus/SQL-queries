@@ -1,3 +1,5 @@
+-- This query shows the dynamics of the creation of new posts for a given location (kyiv)
+
 SELECT COUNT(news_posts.source_url) as frequency,
       DATE(news_posts.added_at) as posts_date,
       news_sources.location_name
