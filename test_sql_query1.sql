@@ -1,3 +1,5 @@
+-- This query selects the news sources, which produce the most posts for each location
+
 SELECT COUNT(news_posts.source_url) as frequency,
       news_posts.source_url,
       news_sources.location_name
