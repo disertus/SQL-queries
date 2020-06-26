@@ -15,5 +15,15 @@ SELECT DISTINCT language FROM films;
 -- COUNT aggregate function; Count all entries:
 SELECT COUNT(*) FROM people;
 -- Count all unique entries in a column:
-SELECT COUNT(DISTINCT birthdate) FROM people;
+SELECT COUNT(DISTINCT language) FROM films;
+
+-- WHERE keyword allows to filter based on both text and numeric values in a table
+-- always comes after the FROM statement
+SELECT title
+FROM films
+WHERE title = 'Metropolis'; -- string search
+
+SELECT title
+FROM films
+WHERE release_year > 2000; -- comparison operators
 
