@@ -1,0 +1,1 @@
+-- Queries of intermediate complexity with commented explanations for myself
