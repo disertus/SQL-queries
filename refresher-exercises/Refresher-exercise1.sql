@@ -55,6 +55,25 @@ AND (language = 'French' OR language = 'Spanish')
 AND gross > 2000000;
 
 
+-- BETWEEN keyword filters values within a specified range (replaces the WHERE ... AND ... construction)
+SELECT title
+FROM films
+WHERE release_year
+BETWEEN 1994 AND 2000;  -- in this case, there's no need to specify the column name each time
+
+
+-- WHERE ... IN operator allows to specify multiple values in the same WHERE clause
+-- this helps to avoid constructions like:
+SELECT *
+FROM table_name
+WHERE ... = ...
+OR ... = ...
+OR ... = ...
+-- Instead it's better to use where-in clause:
+SELECT name
+FROM kids
+WHERE age IN (2, 4, 6, 8, 10);
+
 
 -- WITH clause allows to give a sub-query block a name which can be referenced in several places within the main SQL query
 WITH Roster AS                                         -- first the query mentioned within the  clause is evaluated
