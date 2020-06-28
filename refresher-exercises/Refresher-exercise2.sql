@@ -1,6 +1,3 @@
--- Queries of intermediate complexity with commented explanations for myself
-
-
 -- Aggregate functions can be combined with the WHERE clause to gain further insights from data
 SELECT SUM(budget)
 FROM films
@@ -20,3 +17,16 @@ FROM films;
 -- calculating death rate in PERCENTAGE
 SELECT (COUNT(deathdate) * 100.0 / COUNT(*)) AS percentage_dead 
 FROM people;
+
+                                         
+                                         
+-- SORTING AND GROUPING:
+-- ORDER BY keyword is used to sort results in ascending or descending order 
+SELECT title
+FROM films
+ORDER BY release_year DESC; -- returns the results sorted in DESCENDING order
+
+SELECT name
+FROM people
+ORDER BY name;
+										 
