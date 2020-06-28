@@ -29,7 +29,9 @@ WHERE title = 'Metropolis'; -- string search
 
 SELECT title
 FROM films
-WHERE release_year > 2000; -- comparison operators
+WHERE release_year > 2000
+AND release_year < 2004; -- use AND operator, to select entires upon multiple conditions
+                         -- NB: specify the column name separately for every AND condition
 
 
 
