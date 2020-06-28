@@ -12,6 +12,9 @@ SELECT * FROM people LIMIT 10;
 -- selection of unique entries with DISTINCt for duplicated entries
 SELECT DISTINCT language FROM films;
 
+-- AS keyword, creating an alias to an aggregated function or any other selection, makes it more readable
+SELECT MAX(budget) AS max_budget -- returns 'max_budget' column instead of 'max'
+FROM films;
 
 
 -- COUNT() aggregate function; Count all entries:
