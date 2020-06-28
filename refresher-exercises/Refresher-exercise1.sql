@@ -27,10 +27,11 @@ SELECT title
 FROM films
 WHERE title = 'Metropolis'; -- string search
 
-SELECT title
+SELECT name, language, release_year
 FROM films
-WHERE release_year > 2000
-AND release_year < 2004; -- use AND operator, to select entires upon multiple conditions
+WHERE language = 'Spanish'
+AND release_year > 2000
+AND release_year < 2010; -- use unlimited amount of AND operators to select entires upon multiple conditions
                          -- NB: specify the column name separately for every AND condition
 
 
