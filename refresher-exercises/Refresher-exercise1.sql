@@ -70,9 +70,10 @@ WHERE ... = ...
 OR ... = ...
 OR ... = ...
 -- Instead it's better to use where-in clause:
-SELECT name
-FROM kids
-WHERE age IN (2, 4, 6, 8, 10);
+SELECT title, release_year
+FROM films
+WHERE release_year IN (1990, 2000)
+AND duration > 120; 
 
 
 -- WITH clause allows to give a sub-query block a name which can be referenced in several places within the main SQL query
@@ -84,6 +85,45 @@ WITH Roster AS                                         -- first the query mentio
   SELECT 'Eisenhower', 77)
 SELECT * FROM Roster                                   -- following this, the main query associated with the WITH clause is finally executed
 
+
+-- IS NULL checks for null (missing) values
+SELECT COUNT(*)
+FROM people
+WHERE birthdate IS NULL;	-- returns the number of missing values in the table
+
+-- IS NOT NULL returns only the entries, which don't contain any missing values
+SELECT name
+FROM people
+WHERE birthdate IS NOT NULL;
+
+
+-- LIKE and NOT LIKE operators can be used in a WHERE clause to search for a pattern in a column
+-- '%' will match zero, one, or many characters in text:
+SELECT name
+FROM companies
+WHERE name LIKE 'Data%'; -- matches 'Datafile' 'Datatable' etc.
+-- '_' wildcard will match a single character
+SELECT name
+FROM companies
+WHERE name LIKE 'DataC_mp';  -- matches 'DataCimp', 'DataCymp' etc.
+
+SELECT name
+FROM people
+WHERE name LIKE '_r%'; -- returns the names of people, that have 'r' as second letter
+SELECT name
+FROM people
+WHERE name NOT LIKE 'A%'; -- returns the names of people, that don't start with 'A'
+
+-- AGGREGATE FUNCTIONS - functions which perform some sort of calculation over the data
+-- AVG() returns the average value of all entries in the field
+SELECT AVG(budget)
+FROM films;
+-- MAX() / MIN() returns the maximum/minimum value in the field
+SELECT MAX(budget)
+FROM films;
+-- SUM() returns the sum of all values in the filed
+SELECT SUM(budget)
+FROM films;
 
 
 
