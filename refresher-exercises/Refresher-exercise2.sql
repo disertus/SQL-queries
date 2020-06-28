@@ -29,4 +29,10 @@ ORDER BY release_year DESC; -- returns the results sorted in DESCENDING order
 SELECT name
 FROM people
 ORDER BY name;
+
+SELECT title
+FROM films
+WHERE release_year BETWEEN 2000 AND 2012
+ORDER BY release_year; -- returns titles of films released btw 2000 and 2012 in ascending order
 										 
+
