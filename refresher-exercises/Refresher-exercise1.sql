@@ -36,6 +36,26 @@ AND release_year < 2010; -- use unlimited amount of AND operators to select enti
 
 
 
+-- AND / OR conditions, used when some but not all of the conditions need to be met
+SELECT title
+FROM films
+WHERE release_year = 1994
+OR release_year = 2000;
+
+-- when combining AND and OR, enclose the individual clauses in parentheses
+SELECT title
+FROM films
+WHERE (release_year = 1994 OR release_year = 1995)
+AND (certification = 'PG' OR certification = 'R');
+
+SELECT title, release_year
+FROM films
+WHERE (release_year >= 1990 AND release_year < 2000)
+AND (language = 'French' OR language = 'Spanish')
+AND gross > 2000000;
+
+
+
 -- WITH clause allows to give a sub-query block a name which can be referenced in several places within the main SQL query
 WITH Roster AS                                         -- first the query mentioned within the  clause is evaluated
  (SELECT 'Adams' as LastName, 50 as SchoolID UNION ALL -- the output of this evaluation is stored in a temporary relation
