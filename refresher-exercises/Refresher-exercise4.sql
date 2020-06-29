@@ -14,5 +14,25 @@ FROM prime_minsters AS p1
 LEFT JOIN presidents AS p2
 ON p1.country = p2.country;
 
+SELECT c1.name AS city, code, c2.name AS country,  -- selects all values for all keys in the LEFT table, even if values in the RIGHT are NULL
+       region, city_proper_pop
+FROM cities AS c1
+  -- 1. Join right table (with alias)
+  LEFT JOIN countries AS c2
+    -- 2. Match on country code
+    ON c1.country_code = c2.code
+-- 3. Order by descending country code
+ORDER BY code DESC;
+
+SELECT c.region, AVG(e.gdp_percapita) AS avg_gdp 
+FROM countries AS c
+  LEFT JOIN economies AS e
+    -- Match on code fields
+    USING (code)
+-- Focus on 2010
+WHERE year = 2010
+-- Group by region
+GROUP BY c.region;
+
 -- RIGHT JOIN is much less common then inner or left JOINs
 -- It is the reverse of the LEFT JOIN
