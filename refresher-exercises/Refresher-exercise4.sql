@@ -82,3 +82,12 @@ WHERE region LIKE 'Melanesia' OR region LIKE 'Micronesia';
 
 
 
+-- CROSS JOINs - create all possible combinations between the keys in LEFT and RIGHT tables:
+1-a    2-a
+1-b    2-b
+1-c    2-c etc.
+
+
+
+
+
