@@ -59,3 +59,14 @@ SELECT c.code,
     ON c.code = e.code;
     
     
+-- INNER JOIN with USING
+-- when a key firld has the same name in both tables it's possible to use USING instead of ON
+SELECT l.id
+       l.val
+       r.val
+FROM l
+INNER JOIN r
+USING (id); -- id field's name is the same in both tables, such wording is shorter and more readable
+            -- the order of joins in this case does not play a big role
+
+
