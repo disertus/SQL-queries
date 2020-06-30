@@ -24,3 +24,19 @@ WHERE name IN
   (SELECT capital
    FROM countries)
 ORDER BY urbanarea_pop DESC;
+
+
+-- Subqueries inside FROM clause
+-- It is possible to indicate two fields in the FROM clause
+
+-- Select the maximum inflation rate as max_inf
+SELECT max (inflation_rate) as max_inf, continent
+  -- Subquery using FROM
+  FROM (
+      SELECT name, continent, inflation_rate
+      FROM countries
+      INNER JOIN economies
+      USING (code)
+      WHERE year = 2015) AS subquery
+-- Group by continent
+GROUP BY continent;
