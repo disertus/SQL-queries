@@ -15,13 +15,13 @@ SELECT COUNT(source_url) AS frequency,
        location_name
     FROM news_posts AS np
     INNER JOIN news_sources ns on np.source_url = ns.url
-    WHERE source_url = (  -- Main difference - WHERE clause filtering out unnecessary results
+    WHERE source_url = (  -- Main difference - WHERE clause filtering only the top first result
         SELECT n1.source_url
         FROM news_posts AS n1
         INNER JOIN news_sources n2 ON n1.source_url = n2.url
         WHERE n2.location_name = ns.location_name
         GROUP BY n1.source_url
         ORDER BY COUNT(*) DESC, n1.source_url
-        LIMIT 1)
+        LIMIT 1)  -- leaving only 1 result per each group
     GROUP BY location_name, source_url
     ORDER BY location_name, frequency DESC;
