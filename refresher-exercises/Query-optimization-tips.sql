@@ -12,3 +12,24 @@ CREATE TEMP TABLE tmp AS
   FROM world_holidays
   WHERE country_code = 'USA'
  
+-- WHERE clause can considerably reduce the amount of presented rows, and therefore limit the workload for the DB
+-- It appears early in the order of query execution, which is a plus - no need to load unnecessary data
+
+-- EXAPLAIN command - dispalys the order and cost estimation of a query
+-- Handy to use before launching queries on big data sets, which may influence the performance of the DB
+EXPLALIN 
+SELECT *
+FROM phones
+WHERE country LIKE ANY(ARRAY(['Ch%', 'In%']) -- this query combines filters into one operation
+                       
+EXPLAIN
+SELECT *
+FROM phones
+WHERE country LIKE 'Ch%'
+OR country LIKE 'In%'  -- filtering happens as two separate operations
+                       
+-- Same as above goes for the WHERE IN clauses - they are more readable and efficient than checking each value separately
+-- as in WHERE ... = '...' AND ... = '...'. WHERE ... IN ('...', '...') is better
+                       
+-- Integers are easier to search - less workload for the DB (therefore codes are preferred to words when filtering results)
+                       
