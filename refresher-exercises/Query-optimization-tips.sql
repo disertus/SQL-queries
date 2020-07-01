@@ -32,4 +32,16 @@ OR country LIKE 'In%'  -- filtering happens as two separate operations
 -- as in WHERE ... = '...' AND ... = '...'. WHERE ... IN ('...', '...') is better
                        
 -- Integers are easier to search - less workload for the DB (therefore codes are preferred to words when filtering results)
-                       
+-- they are shorter, take less memory storage
+
+-- Instead of JOINing on multiple values, it's better to use the WHERE filter, which will limit the amount of presented records
+-- and make the query faster
+
+-- Always match the records with the same detail granularity to prevent duplication
+
+-- View != table, it just indicates the direction towards the data inside the tables
+-- THere are simple and Materialized views - those which store the 
+
+-- SQL DBs are quick to return columns (constant time), and slow returning the rows (linear time complexity)
+
+
