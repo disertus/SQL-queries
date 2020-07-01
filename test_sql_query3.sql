@@ -10,18 +10,18 @@ GROUP BY location_name, source_url  -- the query works because the non-aggregate
 ORDER BY location_name, frequency DESC;
 
 -- new solution
-SELECT news_sources.location_name,
-      (SELECT COUNT(source_url), 
-                    source_url
-       FROM news_posts
-       GROUP BY source_url)
-FROM news_sources
-      WHERE source_url IN 
-            (SELECT MAX(post_count) 
-             FROM (
-                   SELECT COUNT(news_posts.rource_url) AS post_count,
-                                news_sources.location_name
-                   FROM news_posts
-                   INNER JOIN news_sources ON news_posts.source_url = news_sources.url
-                   GROUP BY news_sources.location_name) AS grouped_table
-GROUP BY location_name;
+SELECT COUNT(source_url) AS frequency,
+       source_url,
+       location_name
+    FROM news_posts AS np
+    INNER JOIN news_sources ns on np.source_url = ns.url
+    WHERE source_url = (  -- Main difference - WHERE clause filtering out unnecessary results
+        SELECT n1.source_url
+        FROM news_posts AS n1
+        INNER JOIN news_sources n2 ON n1.source_url = n2.url
+        WHERE n2.location_name = ns.location_name
+        GROUP BY n1.source_url
+        ORDER BY COUNT(*) DESC, n1.source_url
+        LIMIT 1)
+    GROUP BY location_name, source_url
+    ORDER BY location_name, frequency DESC;
