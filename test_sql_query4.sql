@@ -12,6 +12,10 @@ WITH views_per_month AS
   INNER JOIN sql_assignment.news_posts AS n ON p.post_url = n.url
   GROUP BY source_url, month
   ORDER BY month DESC)
+  
+-- Query generating a 'wide' pivoted table with pageviews per source per distinct month;
+-- since the table with source urls is static, whis is a one-time operation (all column selects
+-- can be generated with a simple script and copied into this select statement)
 SELECT month,
        ANY_VALUE(if(source_url = 'allo.ua', views, null)) AS allo,
        ANY_VALUE(if(source_url = 'facebook.com', views, null)) AS facebook,
