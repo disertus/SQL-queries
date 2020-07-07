@@ -22,7 +22,7 @@ SELECT month,
        ANY_VALUE(if(source_url = 'google.com', views, null)) AS google,
        ANY_VALUE(if(source_url = 'amazon.com', views, null)) AS amazon,
        ANY_VALUE(if(source_url = 'root.kz', views, null)) AS root,
-       ANY_VALUE(if(source_url = 'rozetka.ua', views, null)) AS rozetka
+       ANY_VALUE(if(source_url = 'rozetka.ua', views, null)) AS rozetka  -- this step can be scripted - filling in the details manually for hundreds/thousands domains can be tedious
 FROM views_per_month AS vp
 INNER JOIN sql_assignment.news_sources AS ns ON vp.source_url = ns.url
 WHERE ns.location_name = loc_name -- corresponds to the 'loc' parameter
