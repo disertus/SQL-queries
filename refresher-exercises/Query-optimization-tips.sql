@@ -15,7 +15,7 @@ CREATE TEMP TABLE tmp AS
 -- WHERE clause can considerably reduce the amount of presented rows, and therefore limit the workload for the DB
 -- It appears early in the order of query execution, which is a plus - no need to load unnecessary data
 
--- EXAPLAIN command - dispalys the order and cost estimation of a query
+-- EXAPLAIN command - dispalys the order and cost estimation of a query (not valid for BigQuery, though)
 -- Handy to use before launching queries on big data sets, which may influence the performance of the DB
 EXPLALIN 
 SELECT *
